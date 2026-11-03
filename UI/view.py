@@ -21,6 +21,9 @@ class View:
         # Controller
         self.controller = None
 
+        # LIST VIEW (AGGIUNTA DA ME)
+        self.list_view = None
+
     def show_alert(self, messaggio):
         self.alert.show_alert(messaggio)
 
@@ -37,9 +40,43 @@ class View:
 
         # --- Sezione 2: Filtraggio ---
         # TODO
+        self.dd_biblioteca = ft.Dropdown(label="Biblioteca", width=300)
+        self.dd_biblioteca.options.append(
+            ft.DropdownOption(key="Biblioteca civica Italo Calvino", text="Biblioteca civica Italo Calvino"))
+        self.dd_biblioteca.options.append(
+            ft.DropdownOption(key="Biblioteca civica Francesco Cognasso", text="Biblioteca civica Francesco Cognasso"))
+        self.dd_biblioteca.options.append(
+            ft.DropdownOption(key="Biblioteca civica Cesare Pavese", text="Biblioteca civica Cesare Pavese"))
+        self.dd_biblioteca.options.append(
+            ft.DropdownOption(key="Biblioteca musicale Andrea Della Corte", text="Biblioteca musicale Andrea Della Corte"))
+        self.dd_biblioteca.options.append(
+            ft.DropdownOption(key="Biblioteca del Centro interculturale", text="Biblioteca del Centro interculturale"))
+        self.dd_biblioteca.options.append(
+            ft.DropdownOption(key="Biblioteca civica Dietrich Bonhoeffer", text="Biblioteca civica Dietrich Bonhoeffer"))
+        self.dd_biblioteca.options.append(
+            ft.DropdownOption(key="Biblioteca civica Don Lorenzo Milani", text="Biblioteca civica Don Lorenzo Milani"))
+        self.dd_biblioteca.options.append(
+            ft.DropdownOption(key="Biblioteca civica Primo Levi", text="Biblioteca civica Primo Levi"))
+        self.dd_biblioteca.options.append(
+            ft.DropdownOption(key="Biblioteca civica Luigi Carluccio", text="Biblioteca civica Luigi Carluccio"))
+
+        self.dd_genere = ft.Dropdown(label="Genere", width=200)
+        Fantascienza
+        Fantasy
+        Fumetto
+        Giallo
+        Poesia
+        Racconti
+        Ragazzi
+        Romanzo
+        Saggio
+        Storia
+        Horror
 
         # Sezione 3: Libri
         # TODO
+        btn = ft.Button(content="Mostra Libri",
+                        on_click=self.controller.handler_btn)
 
         # --- Toggle Tema ---
         self.toggle_cambia_tema = ft.Switch(label="Tema scuro", value=True, on_change=self.cambia_tema)
@@ -54,9 +91,18 @@ class View:
 
             # Sezione 2: Filtraggio
             # TODO
+            ft.Row(controls=[self.dd_biblioteca, self.dd_genere],
+                   spacing=50,
+                   alignment=ft.MainAxisAlignment.CENTER),
+            ft.Divider(),
 
             # Sezione 3: Libri
             # TODO
+            ft.Row(controls=[btn],
+                   alignment=ft.MainAxisAlignment.CENTER),
+            ft.ListView(expand=True,
+                        spacing=10)
+
         )
 
         self.page.scroll = "adaptive"

@@ -11,3 +11,4 @@ class BibliotecaDAO:
         pass
 
     # TODO
+    # Funzione incaricata di leggere le biblioteche dal database con SQL.
